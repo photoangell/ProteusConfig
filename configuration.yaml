@@ -1,0 +1,170 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Proteus IV
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret base_lat
+  longitude: !secret base_long
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 21
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/London
+
+# Show links to resources in log and frontend
+#introduction:
+
+#zones
+zone:
+  name: Work
+  latitude: 51.5108172
+  longitude: -0.082078
+  radius: 250
+  icon: mdi:worker
+
+zone 1:
+  name: Tate Modern
+  latitude: 51.5075953
+  longitude: -0.1015451
+  radius: 100
+  icon: mdi:factory
+
+zone 2:
+  name: Tate Britain
+  latitude: 51.4910621
+  longitude: -0.1299773
+  radius: 100
+  icon: mdi:worker
+
+
+# Enables the frontend
+frontend:
+
+http:
+  # Uncomment this to add a password (recommended!)
+  api_password: !secret http_api_password
+  # Uncomment this if you are using SSL or running in Docker etc
+  base_url: !secret http_base_url
+  #ip_ban_enabled: True
+  login_attempts_threshold: 5
+
+
+
+# Checks for available updates
+updater:
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time.
+history:
+
+# View all events in a logbook
+logbook:
+
+# Track the sun
+sun:
+
+# Weather Prediction
+sensor:
+  - platform: yr
+  - platform: darksky
+    api_key: !secret darksky_api_key
+    monitored_conditions:
+      - summary
+      - icon
+      - nearest_storm_distance
+      - nearest_storm_bearing
+      - precip_type
+      - precip_intensity
+      - precip_probability
+      - temperature
+      - apparent_temperature
+#      - dew_point
+      - wind_speed
+      - wind_bearing
+      - cloud_cover
+      - humidity
+      - pressure
+      - visibility
+#      - ozone
+      - minutely_summary
+      - hourly_summary
+      - daily_summary
+      - temperature_max
+      - temperature_min
+      - apparent_temperature_max
+      - apparent_temperature_min
+      - precip_intensity_max
+  - platform: imap_email_content
+    server: imap.gmail.com
+    port: 993
+    username: !secret imap_username
+    password: !secret imap_password
+    senders:
+      - !secret email_s1
+      - !secret email_a1
+      - !secret email_s2
+  - platform: dht
+    sensor: DHT11
+    pin: 23
+    name: Living Room
+    monitored_conditions:
+      - temperature
+      - humidity
+
+
+
+# Text to speech
+tts:
+  platform: google
+
+logger:
+  default: warn
+  logs:
+    homeassistant.components.device_tracker: warn
+    homeassistant.components.media_player: warn
+
+device_tracker:
+  - platform: bluetooth_tracker
+  - platform: nmap_tracker
+    hosts: 192.168.1.1-200
+    home_interval: 10
+    scan_options: " -sP "
+  - platform: asuswrt
+    host: 192.168.1.1
+    username: !secret asus_username
+    password: !secret asus_password
+    protocol: ssh
+
+notify:
+  - name: email_stephen
+    platform: smtp
+    server: smtp.gmail.com
+    port: 587
+    sender: !secret smtp_username
+    starttls: true
+    username: !secret smtp_username
+    password: !secret smtp_password
+    recipient: !secret email_s1
+
+#cal
+google:
+  client_id: !secret gcal_client_id
+  client_secret: !secret gcal_client_secret
+
+
+media_player:
+  - platform: mpd
+    host: 192.168.1.208
+
+ifttt:
+  key: !secret ifttt_key
+
+
+
+
+
