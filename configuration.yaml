@@ -65,6 +65,8 @@ history:
 # View all events in a logbook
 logbook:
 
+group: !include groups.yaml
+
 # Track the sun		
 sun:
  
