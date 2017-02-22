@@ -66,12 +66,12 @@ history:
 logbook:
 
 # Track the sun		
-sun:		
-moon:
+sun:
  
 # Weather Prediction
 sensor:
   - platform: yr
+  - platform: moon
   - platform: darksky
     api_key: !secret darksky_api_key
     monitored_conditions:
