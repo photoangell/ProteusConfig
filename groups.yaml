@@ -1,0 +1,6 @@
+astro:
+  name: Astro
+  entities:
+    - sensor.moon
+    - sun.sun
+    
