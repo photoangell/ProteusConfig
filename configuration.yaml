@@ -70,7 +70,13 @@ group: !include groups.yaml
 # Track the sun		
 sun:
  
-# Weather Prediction
+
+mqtt: 
+ 
+# Sensors
+binary_sensor:
+  - platform: iss
+  
 sensor:
   - platform: yr
   - platform: moon
@@ -118,7 +124,14 @@ sensor:
     monitored_conditions:
       - temperature
       - humidity
-
+  - platform: bitcoin
+    display_options:
+      - exchangerate
+      - trade_volume_btc
+      - trade_volume_usd
+      - number_of_transactions
+      - total_btc_sent
+      - market_price_usd
 
 
 # Text to speech
