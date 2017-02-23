@@ -1,2 +1,2 @@
 # ProteusConfig
-https://travis-ci.org/photoangell/ProteusConfig.svg?branch=master
+<img src="https://travis-ci.org/photoangell/ProteusConfig.svg?branch=master">
