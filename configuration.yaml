@@ -108,6 +108,11 @@ sensor:
       - apparent_temperature_max
       - apparent_temperature_min
       - precip_intensity_max
+  - platform: waqi
+    locations:
+      - City of London - Farringdon Street
+#    stations:
+#      - Beijing US Embassy
   - platform: imap_email_content
     server: imap.gmail.com
     port: 993
