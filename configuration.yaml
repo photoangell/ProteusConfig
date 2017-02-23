@@ -124,7 +124,7 @@ sensor:
       - !secret email_s2
   - platform: dht
     sensor: DHT11
-    pin: 23
+    pin: 11
     name: Living Room
     monitored_conditions:
       - temperature
