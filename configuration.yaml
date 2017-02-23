@@ -129,6 +129,16 @@ sensor:
     monitored_conditions:
       - temperature
       - humidity
+  - platform: mqtt
+    state_topic: 'studio'
+    name: 'Temperature'
+    unit_of_measurement: '°C'
+    value_template: '{{ value_json.temperature }}'
+  - platform: mqtt
+    state_topic: 'studio'
+    name: 'Humidity'
+    unit_of_measurement: '%'
+    value_template: '{{ value_json.humidity }}'
   - platform: bitcoin
     display_options:
       - exchangerate
