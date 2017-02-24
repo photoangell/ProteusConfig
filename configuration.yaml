@@ -170,6 +170,9 @@ device_tracker:
     username: !secret asus_username
     password: !secret asus_password
     protocol: ssh
+  - platform: ping
+    hosts:
+      Modem: 10.0.0.1
 
 notify:
   - name: email_stephen
