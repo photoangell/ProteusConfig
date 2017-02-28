@@ -111,6 +111,7 @@ sensor:
       - apparent_temperature_min
       - precip_intensity_max
   - platform: waqi
+    token: !secret waqi_key
     locations:
       - City of London - Farringdon Street
 #    stations:
