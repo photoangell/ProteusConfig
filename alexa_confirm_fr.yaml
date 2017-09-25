@@ -1,0 +1,9 @@
+          >
+          {% set responses = [
+          "<speak><say-as interpret-as='interjection'>ooh la la</say-as></speak>",
+          "<speak>bum bums</speak>",
+          "<speak><say-as interpret-as='interjection'>voila</say-as></speak>",
+          "<speak><say-as interpret-as='interjection'>voila</say-as></speak>"
+          ] %}
+          {% set rindex =  (range(0, (responses | length - 1) )|random) -%}
+          {{responses[rindex]}}

@@ -69,6 +69,8 @@ logbook:
 
 group: !include groups.yaml
 
+alexa: !include alexa.yaml
+
 # Track the sun		
 sun:
  
@@ -162,12 +164,14 @@ logger:
     homeassistant.components.device_tracker: warn
     homeassistant.components.media_player: warn
 
+#    scan_options: " -sP "
+#    scan_options: " -sP --host-timeout 5s"
+
 device_tracker:
   - platform: bluetooth_tracker
   - platform: nmap_tracker
     hosts: 192.168.1.1-200
     home_interval: 10
-    scan_options: " -sP "
   - platform: asuswrt
     host: 192.168.1.1
     username: !secret asus_username
@@ -203,6 +207,10 @@ media_player:
 ifttt:
   key: !secret ifttt_key
 
+switch:
+  - platform: tplink
+    host: 192.168.1.220
+    name: tplamp
 
 
 

@@ -1,0 +1,33 @@
+intent_script:
+  IntroductionIntent:
+    speech:
+      type: plaintext
+      text: hello, I am proteus
+  MediaPauseIntent:
+    action:
+      service: media_player.media_pause
+      data_template:
+        entity_id: media_player.mpd
+    speech:
+      type: plaintext
+      text: !include alexa_confirm.yaml
+  MediaPlayIntent:
+    action:
+      service: media_player.media_play
+      data_template:
+        entity_id: media_player.mpd
+    speech:
+      type: plaintext
+      text: !include alexa_confirm.yaml
+  MediaPlayFIPIntent:
+    action:
+      service: media_player.play_media
+      data_template:
+        entity_id: media_player.mpd
+        media_content_id: tunein:station:s15200
+        media_content_type: MUSIC
+    speech:
+      type: ssml
+      text: !include alexa_confirm_fr.yaml
+
+
