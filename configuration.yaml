@@ -69,7 +69,9 @@ logbook:
 
 group: !include groups.yaml
 
-alexa: !include alexa.yaml
+alexa:
+intent_script: !include alexa.yaml
+
 
 # Track the sun		
 sun:
