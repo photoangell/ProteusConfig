@@ -21,4 +21,6 @@ harmony_media_room.conf
 pyozw.sqlite
 .*
 !/.gitignore
+*.db-shm
+*.db-wal
 
