@@ -23,4 +23,6 @@ pyozw.sqlite
 !/.gitignore
 *.db-shm
 *.db-wal
+*.sln
+
 
