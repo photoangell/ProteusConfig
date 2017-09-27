@@ -69,7 +69,7 @@ history:
 logbook:
 
 alexa:
-intent_script: !include alexa.yaml
+intent_script: !include includes/alexa.yaml
 
 
 # Track the sun		
