@@ -27,6 +27,9 @@ conversation:
 history:
 # View all events in a logbook
 logbook:
+  exclude:
+    entities:
+      - sensor.17heyworthroadgmailcom  
 # Track the sun		
 sun:
 
