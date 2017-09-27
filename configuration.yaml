@@ -84,7 +84,7 @@ media_player:
     host: 192.168.1.208
     name: MusicBox
   - platform: mpd
-    host: 192.168.1.203
+    host: 192.168.1.202
     name: Studio
   - platform: snapcast
     host: 192.168.1.208
