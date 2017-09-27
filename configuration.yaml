@@ -14,10 +14,107 @@ homeassistant:
 
 # Show links to resources in log and frontend
 #introduction:
-
 config:
+# Enables the frontend
+frontend:
+# Checks for available updates
+updater:
+# Discover some devices automatically
+discovery:
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+# Enables support for tracking state changes over time.
+history:
+# View all events in a logbook
+logbook:
+# Track the sun		
+sun:
 
+http:
+  # Uncomment this to add a password (recommended!)
+  api_password: !secret http_api_password
+  # Uncomment this if you are using SSL or running in Docker etc
+  base_url: !secret http_base_url
+  #ip_ban_enabled: True
+  login_attempts_threshold: 5
+  ip_ban_enabled: True
+
+logger:
+  default: warn
+  logs:
+    homeassistant.components.device_tracker: warn
+    homeassistant.components.media_player: warn
+
+device_tracker:
+  - platform: bluetooth_tracker
+  - platform: nmap_tracker
+    hosts: 192.168.1.1-200
+    home_interval: 10
+  - platform: asuswrt
+    host: 192.168.1.1
+    username: !secret asus_username
+    password: !secret asus_password
+    protocol: ssh
+  - platform: ping
+    hosts:
+      Modem: 10.0.0.1
+#    scan_options: " -sP "
+#    scan_options: " -sP --host-timeout 5s"
+
+tts:
+  platform: google
+
+
+#cal
+google:
+  client_id: !secret gcal_client_id
+  client_secret: !secret gcal_client_secret
+
+ifttt:
+  key: !secret ifttt_key
+
+nest:
+  client_id: !secret nest_client_id
+  client_secret: !secret nest_client_secret
+
+mqtt: 
+
+media_player:
+  - platform: mpd
+    host: 192.168.1.208
+  - platform: snapcast
+    host: 192.168.1.208
+    
+notify:
+  - name: email_stephen
+    platform: smtp
+    server: smtp.gmail.com
+    port: 587
+    sender: !secret smtp_username
+    starttls: true
+    username: !secret smtp_username
+    password: !secret smtp_password
+    recipient: !secret email_s1
+ 
+##########################
+# Includes
+##########################
+alexa:
+intent_script: !include includes/alexa.yaml
+binary_sensor: !include includes/binary_sensor.yaml
+sensor: !include includes/sensors.yaml
+#https://community.home-assistant.io/t/update-config-automatically-if-travis-ci-build-succeeds/19966
+automation: !include_dir_merge_list automation/
+script: !include includes/scripts.yaml
+group: !include includes/groups.yaml
+switch: !include includes/switch.yaml
+scene: !include includes/scenes.yaml
+input_boolean: !include includes/inputs.yaml
+shell_command: !include includes/shell_commands.yaml
+
+##########################
 #zones
+##########################
 zone:
   name: Work
   latitude: 51.5108172
@@ -39,118 +136,3 @@ zone 2:
   radius: 100
   icon: mdi:worker
 
-
-# Enables the frontend
-frontend:
-
-http:
-  # Uncomment this to add a password (recommended!)
-  api_password: !secret http_api_password
-  # Uncomment this if you are using SSL or running in Docker etc
-  base_url: !secret http_base_url
-  #ip_ban_enabled: True
-  login_attempts_threshold: 5
-  ip_ban_enabled: True
-
-
-# Checks for available updates
-updater:
-
-# Discover some devices automatically
-discovery:
-
-# Allows you to issue voice commands from the frontend in enabled browsers
-conversation:
-
-# Enables support for tracking state changes over time.
-history:
-
-# View all events in a logbook
-logbook:
-
-alexa:
-intent_script: !include includes/alexa.yaml
-
-
-# Track the sun		
-sun:
- 
-
-mqtt: 
-
-
-
-# Text to speech
-tts:
-  platform: google
-
-logger:
-  default: warn
-  logs:
-    homeassistant.components.device_tracker: warn
-    homeassistant.components.media_player: warn
-
-#    scan_options: " -sP "
-#    scan_options: " -sP --host-timeout 5s"
-
-device_tracker:
-  - platform: bluetooth_tracker
-  - platform: nmap_tracker
-    hosts: 192.168.1.1-200
-    home_interval: 10
-  - platform: asuswrt
-    host: 192.168.1.1
-    username: !secret asus_username
-    password: !secret asus_password
-    protocol: ssh
-  - platform: ping
-    hosts:
-      Modem: 10.0.0.1
-
-notify:
-  - name: email_stephen
-    platform: smtp
-    server: smtp.gmail.com
-    port: 587
-    sender: !secret smtp_username
-    starttls: true
-    username: !secret smtp_username
-    password: !secret smtp_password
-    recipient: !secret email_s1
-
-#cal
-google:
-  client_id: !secret gcal_client_id
-  client_secret: !secret gcal_client_secret
-
-
-media_player:
-  - platform: mpd
-    host: 192.168.1.208
-  - platform: snapcast
-    host: 192.168.1.208
-    
-ifttt:
-  key: !secret ifttt_key
-
-
-nest:
-  client_id: !secret nest_client_id
-  client_secret: !secret nest_client_secret
-
-
-
- 
-##########################
-# Includes
-##########################
-binary_sensor: !include includes/binary_sensor.yaml
-sensor: !include includes/sensors.yaml
-#https://community.home-assistant.io/t/update-config-automatically-if-travis-ci-build-succeeds/19966
-automation: !include_dir_merge_list automation/
-script: !include includes/scripts.yaml
-group: !include includes/groups.yaml
-switch: !include includes/switch.yaml
-scene: !include includes/scenes.yaml
-input_boolean: !include includes/inputs.yaml
-shell_command: !include includes/shell_commands.yaml
