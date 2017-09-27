@@ -3,6 +3,8 @@ astro:
   entities:
     - sensor.moon
     - sun.sun
+    - binary_sensor.iss
+
 darksky:
   name: DarkSky
   entities:
@@ -29,3 +31,11 @@ darksky:
     - sensor.dark_sky_visibility
     - sensor.dark_sky_wind_bearing
     - sensor.dark_sky_wind_speed
+bitcoin:
+  name: Bitcoin
+  entities:
+    -  sensor.market_price
+    -  sensor.no_of_transactions
+    -  sensor.total_sent
+    -  sensor.trade_volume
+    -  sensor.trade_volume_2
