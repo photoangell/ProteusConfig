@@ -10,7 +10,7 @@ homeassistant:
   unit_system: metric
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: Europe/London
-  customize: !include includes/customize.yaml
+  #customize: !include includes/customize.yaml
 
 # Show links to resources in log and frontend
 #introduction:
@@ -112,8 +112,8 @@ automation: !include_dir_merge_list automation/
 script: !include includes/scripts.yaml
 group: !include includes/groups.yaml
 switch: !include includes/switch.yaml
-scene: !include includes/scenes.yaml
-input_boolean: !include includes/inputs.yaml
+#scene: !include includes/scenes.yaml
+#input_boolean: !include includes/inputs.yaml
 shell_command: !include includes/shell_commands.yaml
 
 ##########################
