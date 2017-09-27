@@ -22,7 +22,8 @@ Climate:
 
 ci_status:
   name: CI Build Status
-  entities: automation.update_config_if_travis_build_is_successfull
+  entities: 
+    - automation.update_config_if_travis_build_is_successfull
     - binary_sensor.travis_status
     - sensor.travis_status_label
 
