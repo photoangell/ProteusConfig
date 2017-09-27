@@ -12,14 +12,14 @@
     - precip_probability
     - temperature
     - apparent_temperature
-     - dew_point
+    # - dew_point
     - wind_speed
     - wind_bearing
     - cloud_cover
     - humidity
     - pressure
     - visibility
-     - ozone
+    # - ozone
     - minutely_summary
     - hourly_summary
     - daily_summary
