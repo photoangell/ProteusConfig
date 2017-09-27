@@ -32,8 +32,8 @@
   token: !secret waqi_key
   locations:
     - City of London - Farringdon Street
-   stations:
-     - Beijing US Embassy
+   #stations:
+   #  - Beijing US Embassy
 - platform: imap_email_content
   server: imap.gmail.com
   port: 993
