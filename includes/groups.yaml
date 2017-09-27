@@ -4,10 +4,22 @@ astro:
     - sensor.moon
     - sun.sun
     - binary_sensor.iss
+climate:
+  name: Climate
+  entities:
+    - sensor.living_room_thermostat_humidity
+    - sensor.living_room_thermostat_hvac_state
+    - sensor.living_room_thermostat_operation_mode
+    - sensor.living_room_thermostat_target
+    - sensor.living_room_thermostat_temperature
+    - sensor.temperature
+    - sensor.humidity
 
 darksky:
   name: DarkSky
   entities:
+    - sensor.yr_symbol
+    - sensor.waqi_city_of_london__farringdon_street_united_kingdom
     - sensor.dark_sky_apparent_temperature
     - sensor.dark_sky_cloud_coverage
     - sensor.dark_sky_daily_high_apparent_temperature
@@ -35,6 +47,7 @@ bitcoin:
   name: Bitcoin
   entities:
     -  sensor.market_price
+    -  sensor.exchange_rate_1_btc
     -  sensor.no_of_transactions
     -  sensor.total_sent
     -  sensor.trade_volume
