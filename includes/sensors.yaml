@@ -1,0 +1,75 @@
+﻿- platform: yr
+- platform: moon
+- platform: darksky
+  api_key: !secret darksky_api_key
+  monitored_conditions:
+    - summary
+    - icon
+    - nearest_storm_distance
+    - nearest_storm_bearing
+    - precip_type
+    - precip_intensity
+    - precip_probability
+    - temperature
+    - apparent_temperature
+     - dew_point
+    - wind_speed
+    - wind_bearing
+    - cloud_cover
+    - humidity
+    - pressure
+    - visibility
+     - ozone
+    - minutely_summary
+    - hourly_summary
+    - daily_summary
+    - temperature_max
+    - temperature_min
+    - apparent_temperature_max
+    - apparent_temperature_min
+    - precip_intensity_max
+- platform: waqi
+  token: !secret waqi_key
+  locations:
+    - City of London - Farringdon Street
+   stations:
+     - Beijing US Embassy
+- platform: imap_email_content
+  server: imap.gmail.com
+  port: 993
+  username: !secret imap_username
+  password: !secret imap_password
+  senders:
+    - !secret email_s1
+    - !secret email_a1
+    - !secret email_s2
+- platform: dht
+  sensor: DHT11
+  pin: 11
+  name: Living Room
+  monitored_conditions:
+    - temperature
+    - humidity
+- platform: mqtt
+  state_topic: 'studio'
+  name: 'Temperature'
+  unit_of_measurement: '°C'
+  value_template: '{{ value_json.temperature }}'
+- platform: mqtt
+  state_topic: 'studio'
+  name: 'Humidity'
+  unit_of_measurement: '%'
+  value_template: '{{ value_json.humidity }}'
+- platform: bitcoin
+  display_options:
+    - exchangerate
+    - trade_volume_btc
+    - trade_volume_usd
+    - number_of_transactions
+    - total_btc_sent
+    - market_price_usd
+- platform: rest
+  name: Travis Status Label
+  resource: https://api.travis-ci.org/repos/photoangell/ProteusConfig/cc.json?branch=master
+  scan_interval: 60
+  value_template: "{{ value_json.last_build_number }}"

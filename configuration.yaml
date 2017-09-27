@@ -67,8 +67,6 @@ history:
 # View all events in a logbook
 logbook:
 
-group: !include groups.yaml
-
 alexa:
 intent_script: !include alexa.yaml
 
@@ -78,95 +76,8 @@ sun:
  
 
 mqtt: 
- 
-# Sensors
-binary_sensor:
-  - platform: iss
-  - platform: rest
-    name: Travis Status
-    resource: https://api.travis-ci.org/repos/photoangell/ProteusConfig/cc.json?branch=master
-    scan_interval: 60
-    value_template: "{{ value_json.last_build_status|int(1) == 0 }}"
-  
-sensor:
-  - platform: yr
-  - platform: moon
-  - platform: darksky
-    api_key: !secret darksky_api_key
-    monitored_conditions:
-      - summary
-      - icon
-      - nearest_storm_distance
-      - nearest_storm_bearing
-      - precip_type
-      - precip_intensity
-      - precip_probability
-      - temperature
-      - apparent_temperature
-#      - dew_point
-      - wind_speed
-      - wind_bearing
-      - cloud_cover
-      - humidity
-      - pressure
-      - visibility
-#      - ozone
-      - minutely_summary
-      - hourly_summary
-      - daily_summary
-      - temperature_max
-      - temperature_min
-      - apparent_temperature_max
-      - apparent_temperature_min
-      - precip_intensity_max
-  - platform: waqi
-    token: !secret waqi_key
-    locations:
-      - City of London - Farringdon Street
-#    stations:
-#      - Beijing US Embassy
-  - platform: imap_email_content
-    server: imap.gmail.com
-    port: 993
-    username: !secret imap_username
-    password: !secret imap_password
-    senders:
-      - !secret email_s1
-      - !secret email_a1
-      - !secret email_s2
-  - platform: dht
-    sensor: DHT11
-    pin: 11
-    name: Living Room
-    monitored_conditions:
-      - temperature
-      - humidity
-  - platform: mqtt
-    state_topic: 'studio'
-    name: 'Temperature'
-    unit_of_measurement: '°C'
-    value_template: '{{ value_json.temperature }}'
-  - platform: mqtt
-    state_topic: 'studio'
-    name: 'Humidity'
-    unit_of_measurement: '%'
-    value_template: '{{ value_json.humidity }}'
-  - platform: bitcoin
-    display_options:
-      - exchangerate
-      - trade_volume_btc
-      - trade_volume_usd
-      - number_of_transactions
-      - total_btc_sent
-      - market_price_usd
-  - platform: rest
-    name: Travis Status Label
-    resource: https://api.travis-ci.org/repos/photoangell/ProteusConfig/cc.json?branch=master
-    scan_interval: 60
-    value_template: "{{ value_json.last_build_number }}"
 
-#https://community.home-assistant.io/t/update-config-automatically-if-travis-ci-build-succeeds/19966
-automation: !include automation.yaml
+
 
 # Text to speech
 tts:
@@ -221,10 +132,6 @@ media_player:
 ifttt:
   key: !secret ifttt_key
 
-switch:
-  - platform: tplink
-    host: 192.168.1.220
-    name: U3 Switch
 
 nest:
   client_id: !secret nest_client_id
@@ -232,3 +139,17 @@ nest:
 
 
 
+ 
+##########################
+# Includes
+##########################
+binary_sensor: !include includes/binary_sensor.yaml
+sensor: !include includes/sensors.yaml
+#https://community.home-assistant.io/t/update-config-automatically-if-travis-ci-build-succeeds/19966
+automation: !include_dir_merge_list automation/
+script: !include includes/scripts.yaml
+group: !include includes/groups.yaml
+switch: !include includes/switch.yaml
+scene: !include includes/scenes.yaml
+input_boolean: !include includes/inputs.yaml
+shell_command: !include includes/shell_commands.yaml
