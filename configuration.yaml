@@ -10,7 +10,7 @@ homeassistant:
   unit_system: metric
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: Europe/London
-  #customize: !include includes/customize.yaml
+  customize: !include includes/customize.yaml
 
 # Show links to resources in log and frontend
 #introduction:
@@ -102,7 +102,21 @@ notify:
     starttls: true
     username: !secret smtp_username
     password: !secret smtp_password
-    recipient: !secret email_s1
+    recipient: !secret email_s2
+  - name: email_anna
+    platform: smtp
+    server: smtp.gmail.com
+    port: 587
+    sender: !secret smtp_username
+    starttls: true
+    username: !secret smtp_username
+    password: !secret smtp_password
+    recipient: !secret email_a1
+  - name: email_both
+    platform: group
+    services:
+      - service: email_stephen
+      - service: email_anna
  
 ##########################
 # Includes
