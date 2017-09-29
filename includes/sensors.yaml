@@ -35,6 +35,7 @@
    #stations:
    #  - Beijing US Embassy
 - platform: imap_email_content
+  name: houseemail
   server: imap.gmail.com
   port: 993
   username: !secret imap_username
