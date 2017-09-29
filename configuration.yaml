@@ -29,7 +29,7 @@ history:
 logbook:
   exclude:
     entities:
-      - sensor.housesmtp  
+      - sensor.houseemail
 # Track the sun		
 sun:
 
