@@ -74,9 +74,10 @@
   resource: https://api.travis-ci.org/repos/photoangell/ProteusConfig/cc.json?branch=master
   scan_interval: 60
   value_template: "{{ value_json.last_build_number }}"
-- platform: tcp
-  host: 192.168.1.203
-  port: 4028
-  payload: '{\"command\":\"summary\"}'
+- platform: rest
+  name: Piano Ant
+  resource: http://192.168.1.203/api-example
+  method: GET
+  payload: 'stats'
   
   
