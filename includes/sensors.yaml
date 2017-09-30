@@ -76,8 +76,7 @@
   value_template: "{{ value_json.last_build_number }}"
 - platform: rest
   name: Piano Ant
-  resource: http://192.168.1.203/api-example.php
+  resource: http://192.168.1.203/api-example.php?stats
   method: GET
-  payload: 'stats'
   
   
