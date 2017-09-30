@@ -78,5 +78,6 @@
   name: Piano Ant
   resource: http://192.168.1.203/api-example.php?stats
   method: GET
+  unit_of_measurement: Gh/s
   
   
