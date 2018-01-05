@@ -8,3 +8,16 @@
       state: 'Success'
   action:
     - service: script.get_latest_config
+
+- alias: 'Alert on piano ant fail'
+  trigger:
+    platform: state
+    entity_id: sensor.piano_ant
+  condition:
+    - condition: state
+      entity_id: sensor.piano_ant
+      state: 0
+  action
+    - service: notify.email_stephen
+      data:
+        message: check the piano
