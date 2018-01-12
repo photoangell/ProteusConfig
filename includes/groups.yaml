@@ -84,7 +84,7 @@ devices:
     - device_tracker.shield_tablet_k1_a
 
 ha_nodes:
-  name: HA ha_nodes
+  name: HA Nodes
   entities:
     - device_tracker.alexa
     - device_tracker.tap

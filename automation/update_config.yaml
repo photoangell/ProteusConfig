@@ -49,14 +49,9 @@
   action:
     - service: homeassistant.turn_off
       entity_id: switch.u3_switch
-    - service: climate.set_away_mode
+    - service: nest.set_mode
       data:
-        entity_id: climate.living_room
-        away_mode: 'on'
-    - service: climate.set_operation_mode
-      data:
-        entity_id: climate.living_room
-        operation_mode: 'eco'
+        home_mode: away
 
 - alias: 'Home Mode'
   trigger:
@@ -64,14 +59,9 @@
     entity_id: group.main_people
     to: 'home'
   action:
-    - service: climate.set_away_mode
+    - service: nest.set_mode
       data:
-        entity_id: climate.living_room
-        away_mode: 'off'
-    - service: climate.set_operation_mode
-      data:
-        entity_id: climate.living_room
-        operation_mode: 'heat'
+        home_mode: home
 
 - alias: 'Lamp off if late'
   trigger:
