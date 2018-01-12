@@ -47,12 +47,12 @@
 - platform: dht
   sensor: DHT11
   pin: 11
-  name: Living Room
+  name: Hall
   monitored_conditions:
     - temperature
     - humidity
 - platform: mqtt
-  state_topic: 'studio'
+  state_topic: 'Studio'
   name: 'Temperature'
   unit_of_measurement: '°C'
   value_template: '{{ value_json.temperature }}'

@@ -11,13 +11,74 @@
 
 - alias: 'Alert on piano ant fail'
   trigger:
-    platform: state
+    platform: numeric_state
     entity_id: sensor.piano_ant
-  condition:
-    - condition: state
-      entity_id: sensor.piano_ant
-      state: 0
+    value_template: "{{ state.attributes }}"
+    below: 1
   action:
     - service: notify.email_stephen
       data:
         message: check the piano
+
+- alias: 'Lamp on at home at night'
+  trigger:
+  - platform: sun
+    event: sunset
+    offset: '00:00:00'
+  - platform: state
+    entity_id: group.main_people
+    to: 'home'
+  condition:
+    # Prefix the first line of each condition configuration
+    # with a '-'' to enter multiple
+    - condition: state
+      entity_id: group.main_people
+      state: 'home'
+    - condition: time
+      after: '15:00:00'
+      before: '23:00:00'
+  action:
+    service: homeassistant.turn_on
+    entity_id: switch.u3_switch
+
+- alias: 'Away Mode'
+  trigger:
+    platform: state
+    entity_id: group.main_people
+    to: 'not_home'
+  action:
+    - service: homeassistant.turn_off
+      entity_id: switch.u3_switch
+    - service: climate.set_away_mode
+      data:
+        entity_id: climate.living_room
+        away_mode: 'on'
+    - service: climate.set_operation_mode
+      data:
+        entity_id: climate.living_room
+        operation_mode: 'eco'
+
+- alias: 'Home Mode'
+  trigger:
+    platform: state
+    entity_id: group.main_people
+    to: 'home'
+  action:
+    - service: climate.set_away_mode
+      data:
+        entity_id: climate.living_room
+        away_mode: 'off'
+    - service: climate.set_operation_mode
+      data:
+        entity_id: climate.living_room
+        operation_mode: 'heat'
+
+- alias: 'Lamp off if late'
+  trigger:
+  - platform: time
+    at: '00:00:00'
+  action:
+    service: homeassistant.turn_off
+    entity_id: switch.u3_switch
+
+
