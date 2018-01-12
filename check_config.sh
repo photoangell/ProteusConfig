@@ -1,5 +1,5 @@
 #!/bin/bash 
-set -x
+#set -x
 
 cd "/home/homeassistant/.homeassistant/"
 #sudo su -s /bin/bash homeassistant
