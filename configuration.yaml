@@ -11,6 +11,8 @@ homeassistant:
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: Europe/London
   customize: !include includes/customize.yaml
+  whitelist_external_dirs:
+    - '/mnt/router/haTemp'
 
 # Show links to resources in log and frontend
 #introduction:
@@ -30,8 +32,17 @@ logbook:
   exclude:
     entities:
       - sensor.houseemail
-# Track the sun		
+# Track the sun
 sun:
+
+camera:
+  - platform: rpi_camera
+    name: Hall Camera
+    image_height: 960
+    image_width: 1280
+    image_rotation: 90
+    timelapse: 600
+    file_path: /mnt/router/haTemp/hallCamera.jpg
 
 http:
   # Uncomment this to add a password (recommended!)
@@ -47,7 +58,7 @@ logger:
   logs:
     homeassistant.components.device_tracker: warn
     homeassistant.components.media_player: warn
-    #homeassistant.components.mqtt: debug
+    homeassistant.components.mqtt: debug
 
 device_tracker:
   - platform: bluetooth_tracker
@@ -81,7 +92,21 @@ nest:
   client_id: !secret nest_client_id
   client_secret: !secret nest_client_secret
 
-mqtt: 
+mqtt:
+  embedded:
+#    listeners:
+#      default:
+#        max-connections: 5000
+#        bind: localhost:1883
+#        type: tcp
+#      ws-1:
+#          bind: localhost:8888
+#          type: ws
+#    auth:
+#      plugins: ['auth.anonymous']
+#      allow-anonymous: true
+#  broker: localhost
+#  port: 1883
 
 media_player:
   - platform: mpd
@@ -92,7 +117,12 @@ media_player:
     name: Studio
   - platform: snapcast
     host: 192.168.1.208
-    
+  - platform: mpd
+    host: 192.168.1.209
+    name: Proteus
+  - platform: snapcast
+    host: 192.168.1.209
+
 notify:
   - name: email_stephen
     platform: smtp
@@ -117,7 +147,7 @@ notify:
     services:
       - service: email_stephen
       - service: email_anna
- 
+
 ##########################
 # Includes
 ##########################
@@ -133,6 +163,15 @@ switch: !include includes/switch.yaml
 #scene: !include includes/scenes.yaml
 #input_boolean: !include includes/inputs.yaml
 shell_command: !include includes/shell_commands.yaml
+
+
+panel_iframe:
+  router:
+    title: 'Router'
+    url: 'http://192.168.1.0/'
+  miner:
+    title: 'Miner'
+    url: 'http://192.168.1.128/miner.php'
 
 ##########################
 #zones

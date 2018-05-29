@@ -8,13 +8,15 @@ astro:
 climate:
   name: Climate
   entities:
-    - sensor.living_room_thermostat_humidity
     - sensor.living_room_thermostat_hvac_state
     - sensor.living_room_thermostat_operation_mode
     - sensor.living_room_thermostat_target
     - sensor.living_room_thermostat_temperature
-    - sensor.temperature
-    - sensor.humidity
+    - sensor.living_room_thermostat_humidity
+    - sensor.studio_temperature
+    - sensor.studio_humidity
+    - sensor.hall_temperature
+    - sensor.hall_humidity
     - binary_sensor.living_room_thermostat_fan
     - binary_sensor.living_room_thermostat_has_leaf
     - binary_sensor.living_room_thermostat_is_locked
@@ -66,11 +68,13 @@ bitcoin:
     -  sensor.total_sent
     -  sensor.trade_volume
     -  sensor.trade_volume_2
+    -  sensor.piano_ant
 
 main_people:
   name: Main People
   entities:
     - device_tracker.stephen_phone
+    - device_tracker.stephen_phone_bt
     - device_tracker.anna_phone
 
 devices:
@@ -79,9 +83,13 @@ devices:
     - device_tracker.stephen_laptop
     - device_tracker.stephen_headset
     - device_tracker.work_laptop
+    - device_tracker.work_laptop_bt
     - device_tracker.shield_tablet_k1_s
     - device_tracker.anna_laptop
     - device_tracker.shield_tablet_k1_a
+    - device_tracker.itunes_laptop
+    - device_tracker.stephen_old_phone
+    - device_tracker.stephen_old_phone_bt
 
 ha_nodes:
   name: HA Nodes
@@ -92,6 +100,9 @@ ha_nodes:
     - device_tracker.musicbox
     - device_tracker.studio
     - device_tracker.piano
+    - device_tracker.miner
+    - device_tracker.modem
+    - device_tracker.anova_cooker
 
 other_people:
   name: Other People
@@ -100,4 +111,34 @@ other_people:
     - device_tracker.magda_phone
     - device_tracker.magda_ipad
     - device_tracker.alice_phone
+
+unknown_bluetooth:
+  name: Unknown Bluetooth
+  entities:
+    - device_tracker.zte_f320
+    - device_tracker.iphone
+    - device_tracker.iphone_rere
+    - device_tracker.link_vu66nlm
+    - device_tracker.link_vu66nnf
+    - device_tracker.be1002
+    - device_tracker.desktope2cjvqp
+    - device_tracker.crosley_cr8005
+    - device_tracker.ubuntu0
+
+unknown_network:
+  name: Unknown WIFI Network
+  entities:
+    - device_tracker.android53a6a2c1e182f51e
+    - device_tracker.android6463f887639e025c
+    - device_tracker.android1dab40cf59b4ca7
+    - device_tracker.a886dd98e6ec
+    - device_tracker.18742ef9b34a
+    - device_tracker.50465d1b2227
+    - device_tracker.android_356708040760389
+    - device_tracker.androidb41586c42c65863b
+    - device_tracker.703eac3bc21d
+    - device_tracker.hs100
+    - device_tracker.androidd7af011a4f562813
+    - device_tracker.androidd3e8f25625fed863
+
 

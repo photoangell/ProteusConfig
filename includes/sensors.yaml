@@ -52,13 +52,13 @@
     - temperature
     - humidity
 - platform: mqtt
-  state_topic: 'Studio'
-  name: 'Temperature'
+  state_topic: 'studio'
+  name: 'Studio Temperature'
   unit_of_measurement: '°C'
   value_template: '{{ value_json.temperature }}'
 - platform: mqtt
   state_topic: 'studio'
-  name: 'Humidity'
+  name: 'Studio Humidity'
   unit_of_measurement: '%'
   value_template: '{{ value_json.humidity }}'
 - platform: bitcoin
@@ -79,5 +79,5 @@
   resource: http://192.168.1.203/api-example.php?stats
   method: GET
   unit_of_measurement: Gh/s
-  
-  
+
+
