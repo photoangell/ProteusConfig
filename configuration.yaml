@@ -120,8 +120,6 @@ media_player:
   - platform: mpd
     host: 192.168.1.209
     name: Proteus
-  - platform: snapcast
-    host: 192.168.1.209
 
 notify:
   - name: email_stephen
