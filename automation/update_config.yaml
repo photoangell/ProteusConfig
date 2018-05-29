@@ -9,16 +9,16 @@
   action:
     - service: script.get_latest_config
 
-- alias: 'Alert on piano ant fail'
-  trigger:
-    platform: numeric_state
-    entity_id: sensor.piano_ant
-    value_template: "{{ state.attributes }}"
-    below: 1
-  action:
-    - service: notify.email_stephen
-      data:
-        message: check the piano
+#- alias: 'Alert on piano ant fail'
+#  trigger:
+#    platform: numeric_state
+#    entity_id: sensor.piano_ant
+#    value_template: "{{ state.attributes }}"
+#    below: 1
+#  action:
+#    - service: notify.email_stephen
+#      data:
+#        message: check the piano
 
 - alias: 'Lamp on at home at night'
   trigger:
