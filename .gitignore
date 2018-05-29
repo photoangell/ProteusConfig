@@ -24,5 +24,5 @@ pyozw.sqlite
 *.db-shm
 *.db-wal
 *.sln
-
+known_devices.yaml.bak
 

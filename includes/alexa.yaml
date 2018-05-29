@@ -6,7 +6,7 @@ MediaPauseIntent:
   action:
     service: media_player.media_pause
     data_template:
-      entity_id: media_player.mpd
+      entity_id: media_player.MusicBox
   speech:
     type: plaintext
     text: !include alexa_confirm.yaml
@@ -14,7 +14,7 @@ MediaPlayIntent:
   action:
     service: media_player.media_play
     data_template:
-      entity_id: media_player.mpd
+      entity_id: media_player.MusicBox
   speech:
     type: plaintext
     text: !include alexa_confirm.yaml
@@ -22,7 +22,7 @@ MediaPlayFIPIntent:
   action:
     service: media_player.play_media
     data_template:
-      entity_id: media_player.mpd
+      entity_id: media_player.MusicBox
       media_content_id: tunein:station:s15200
       media_content_type: MUSIC
   speech:
