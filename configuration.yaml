@@ -44,6 +44,8 @@ camera:
     image_rotation: 90
     timelapse: 600
     file_path: /mnt/router/haTemp/hallCamera.jpg
+  - platform: local_file
+    file_path: /mnt/router/haTemp/usbweb.jpg
 
 http:
   # Uncomment this to add a password (recommended!)
