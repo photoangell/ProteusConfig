@@ -71,6 +71,15 @@
     service: homeassistant.turn_off
     entity_id: switch.u3_switch
 
+- alias: 'Lamp off if no motion for a time'
+  trigger:
+  - platform: binary_Sensor
+    entity_id: hall_pir
+  action:
+    service: homeassistant.turn_off
+    entity_id: switch.u3_switch
+
+
 - alias: 'Play Fip'
   trigger:
     platform: state
