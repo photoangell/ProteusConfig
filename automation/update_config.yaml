@@ -73,8 +73,11 @@
 
 - alias: 'Lamp off if no motion for a time'
   trigger:
-  - platform: binary_Sensor
-    entity_id: pir_hallway
+  - platform: state_changed
+    entity_id: binary_sensor.pir_hallway
+    new_state: off
+    for:
+      minutes: 15
   action:
     service: homeassistant.turn_off
     entity_id: switch.u3_switch
