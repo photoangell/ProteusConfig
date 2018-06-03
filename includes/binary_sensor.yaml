@@ -6,4 +6,4 @@
   value_template: "{{ value_json.last_build_status|int(1) == 0 }}"
 - platform: rpi_gpio
   ports:
-    21: PIR Hallway
+    21: pir_hallway
