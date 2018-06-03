@@ -73,9 +73,9 @@
 
 - alias: 'Lamp off if no motion for a time'
   trigger:
-  - platform: state_changed
+  - platform: state
     entity_id: binary_sensor.pir_hallway
-    new_state: off
+    to: 'off'
     for:
       minutes: 15
   action:
