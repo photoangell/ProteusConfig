@@ -25,18 +25,12 @@
   - platform: sun
     event: sunset
     offset: '00:00:00'
-  - platform: state
-    entity_id: group.main_people
-    to: 'home'
   condition:
     # Prefix the first line of each condition configuration
     # with a '-'' to enter multiple
     - condition: state
       entity_id: group.main_people
       state: 'home'
-    - condition: time
-      after: '15:00:00'
-      before: '23:00:00'
   action:
     service: homeassistant.turn_on
     entity_id: switch.u3_switch
@@ -49,6 +43,10 @@
   action:
     - service: homeassistant.turn_off
       entity_id: switch.u3_switch
+    - service: homeassistant.turn_off
+      entity_id: switch.musicbox_amp
+    - service: homeassistant.turn_off
+      entity_id: switch.studio_amp
     - service: nest.set_mode
       data:
         home_mode: away
@@ -82,20 +80,31 @@
     service: homeassistant.turn_off
     entity_id: switch.u3_switch
 
-
-- alias: 'Play Fip'
+- alias: 'Lamp on if motion after sunset'
   trigger:
-    platform: state
-    entity_id: group.main_people
-    to: 'home'
+  - platform: state
+    entity_id: binary_sensor.pir_hallway
+    to: 'on'
   condition:
+  - platform: sun
+    state: 'below_horizon'
+  action:
+    service: homeassistant.turn_on
+    entity_id: switch.u3_switch
+
+#- alias: 'Play Fip'
+#  trigger:
+#    platform: state
+#    entity_id: group.main_people
+#    to: 'home'
+#  condition:
     # Prefix the first line of each condition configuration
     # with a '-'' to enter multiple
-    - condition: time
-      after: '16:00:00'
-      before: '22:00:00'
-  action:
-    service: media_player.select_source
-    entity_id: media_player.musicbox
-    data:
-      source: 'fip'
+#    - condition: time
+#      after: '16:00:00'
+#      before: '22:00:00'
+#  action:
+#    service: media_player.select_source
+#    entity_id: media_player.musicbox
+#    data:
+#      source: 'fip'
