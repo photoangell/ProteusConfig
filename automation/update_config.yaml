@@ -22,7 +22,7 @@
 
 - alias: 'Lamp on at home at night'
   trigger:
-  - platform: sun
+    platform: sun
     event: sunset
     offset: '00:00:00'
   condition:
