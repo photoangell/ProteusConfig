@@ -86,7 +86,8 @@
     entity_id: binary_sensor.pir_hallway
     to: 'on'
   condition:
-  - platform: sun
+  - condition: state
+    entity_id: sun.sun
     state: 'below_horizon'
   action:
     service: homeassistant.turn_on
