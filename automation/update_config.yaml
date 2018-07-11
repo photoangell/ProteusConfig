@@ -28,7 +28,10 @@
   trigger:
     platform: state
     entity_id: group.main_people
+    from: 'home'
     to: 'not_home'
+    for:
+      minutes: 15
   action:
     - service: homeassistant.turn_off
       entity_id: switch.u3_switch
@@ -39,6 +42,10 @@
     - service: nest.set_mode
       data:
         home_mode: away
+    - service: media_player.media_pause
+      entity_id: media_player.musicbox
+    - service: media_player.media_pause
+      entity_id: media_player.studio
 
 - alias: 'Home Mode'
   trigger:
