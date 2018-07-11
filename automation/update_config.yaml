@@ -20,20 +20,9 @@
 #      data:
 #        message: check the piano
 
-- alias: 'Lamp on at home at night'
-  trigger:
-    platform: sun
-    event: sunset
-    offset: '00:00:00'
-  condition:
-    # Prefix the first line of each condition configuration
-    # with a '-'' to enter multiple
-    - condition: state
-      entity_id: group.main_people
-      state: 'home'
-  action:
-    service: homeassistant.turn_on
-    entity_id: switch.u3_switch
+################################
+#home/away
+################################
 
 - alias: 'Away Mode'
   trigger:
@@ -61,12 +50,32 @@
       data:
         home_mode: home
 
+################################
+#lights
+################################
+
+#this can be cancelled?
 - alias: 'Lamp off if late'
   trigger:
   - platform: time
     at: '00:00:00'
   action:
     service: homeassistant.turn_off
+    entity_id: switch.u3_switch
+
+- alias: 'Lamp on at home at night'
+  trigger:
+    platform: sun
+    event: sunset
+    offset: '00:00:00'
+  condition:
+    # Prefix the first line of each condition configuration
+    # with a '-'' to enter multiple
+    - condition: state
+      entity_id: group.main_people
+      state: 'home'
+  action:
+    service: homeassistant.turn_on
     entity_id: switch.u3_switch
 
 - alias: 'Lamp off if no motion for a time'
@@ -92,6 +101,20 @@
   action:
     service: homeassistant.turn_on
     entity_id: switch.u3_switch
+
+################################
+#media
+################################
+- alias: 'Amps on if Musicbox on'
+  trigger:
+    platform: state
+    entity_id: media_player.musicbox
+    to: 'playing'
+  action:
+    - service: homeassistant.turn_on
+      entity_id: switch.musicbox_amp
+    - service: homeassistant.turn_on
+      entity_id: switch.studio_amp
 
 #- alias: 'Play Fip'
 #  trigger:
