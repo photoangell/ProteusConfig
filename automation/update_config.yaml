@@ -123,6 +123,18 @@
     - service: homeassistant.turn_on
       entity_id: switch.studio_amp
 
+- alias: 'Amps off if Musicbox off'
+  trigger:
+    platform: state
+    entity_id: media_player.musicbox
+    from: 'playing'
+    to: 'paused'
+  action:
+    - service: homeassistant.turn_off
+      entity_id: switch.musicbox_amp
+    - service: homeassistant.turn_off
+      entity_id: switch.studio_amp
+
 #- alias: 'Play Fip'
 #  trigger:
 #    platform: state
