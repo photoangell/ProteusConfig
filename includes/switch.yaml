@@ -1,16 +1,16 @@
 ﻿- platform: tplink
   host: 10.0.0.220
   name: U3 Switch
-- platform: rpi_rf
-  gpio: 17
-  switches:
-    studio_amp:
-      protocol: 1
-      pulselength: 189
-      code_on: 357635
-      code_off: 357644
-    musicbox_amp:
-      protocol: 1
-      pulselength: 189
-      code_on: 349491
-      code_off: 349500
+#- platform: rpi_rf
+#  gpio: 17
+#  switches:
+#    studio_amp:
+#      protocol: 1
+#      pulselength: 189
+#      code_on: 357635
+#      code_off: 357644
+#    musicbox_amp:
+#      protocol: 1
+#      pulselength: 189
+#      code_on: 349491
+#      code_off: 349500

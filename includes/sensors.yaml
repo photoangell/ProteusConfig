@@ -23,10 +23,6 @@
     - minutely_summary
     - hourly_summary
     - daily_summary
-    - temperature_max
-    - temperature_min
-    - apparent_temperature_max
-    - apparent_temperature_min
     - precip_intensity_max
 - platform: waqi
   token: !secret waqi_key
@@ -44,13 +40,13 @@
     - !secret email_s1
     - !secret email_a1
     - !secret email_s2
-- platform: dht
-  sensor: DHT11
-  pin: 11
-  name: Hall
-  monitored_conditions:
-    - temperature
-    - humidity
+#- platform: dht
+#  sensor: DHT11
+#  pin: 11
+#  name: Hall
+#  monitored_conditions:
+#    - temperature
+#    - humidity
 - platform: mqtt
   state_topic: 'studio'
   name: 'Studio Temperature'

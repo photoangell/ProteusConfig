@@ -1,6 +1,6 @@
 homeassistant:
   # Name of the location where Home Assistant is running
-  name: Proteus
+  name: Alfred
   # Location required to calculate the time the sun rises and sets
   latitude: !secret base_lat
   longitude: !secret base_long
@@ -11,8 +11,8 @@ homeassistant:
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: Europe/London
   customize: !include includes/customize.yaml
-  whitelist_external_dirs:
-    - /mnt/router/haTemp
+#  whitelist_external_dirs:
+#    - /mnt/router/haTemp
 
 # Show links to resources in log and frontend
 cloud:
@@ -36,17 +36,17 @@ logbook:
 # Track the sun
 sun:
 
-camera:
-  - platform: rpi_camera
-    name: Hall Camera
-    image_height: 960
-    image_width: 1280
-    image_rotation: 90
-    timelapse: 600
-    file_path: /mnt/router/haTemp/hallCamera.jpg
-  - platform: local_file
-    name: USB WebCam
-    file_path: /mnt/router/haTemp/usbweb.jpg
+#camera:
+#  - platform: rpi_camera
+#    name: Hall Camera
+#    image_height: 960
+#    image_width: 1280
+#    image_rotation: 90
+#    timelapse: 600
+#    file_path: /mnt/router/haTemp/hallCamera.jpg
+#  - platform: local_file
+#    name: USB WebCam
+#    file_path: /mnt/router/haTemp/usbweb.jpg
 
 http:
   # Uncomment this to add a password (recommended!)
@@ -65,20 +65,21 @@ logger:
     homeassistant.components.mqtt: debug
 
 device_tracker:
-  - platform: bluetooth_tracker
+#  - platform: bluetooth_tracker
   - platform: nmap_tracker
     hosts: 192.168.1.1-200
     home_interval: 10
-  - platform: asuswrt
-    host: 192.168.1.1
-    username: !secret asus_username
-    password: !secret asus_password
-    protocol: ssh
   - platform: ping
     hosts:
       Modem: 10.0.0.1
 #    scan_options: " -sP "
 #    scan_options: " -sP --host-timeout 5s"
+
+asuswrt:
+  host: 192.168.1.1
+  username: !secret asus_username
+  password: !secret asus_password
+  protocol: ssh
 
 tts:
   platform: google
@@ -121,9 +122,9 @@ media_player:
     name: Studio
   - platform: snapcast
     host: 192.168.1.208
-  - platform: mpd
-    host: 192.168.1.209
-    name: Proteus
+#  - platform: mpd
+#    host: 192.168.1.209
+#    name: Proteus
 
 notify:
   - name: email_stephen
