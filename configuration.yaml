@@ -50,7 +50,7 @@ sun:
 
 http:
   # Uncomment this to add a password (recommended!)
-  api_password: !secret http_api_password
+#  api_password: !secret http_api_password
   # Uncomment this if you are using SSL or running in Docker etc
   base_url: !secret http_base_url
   #ip_ban_enabled: True
