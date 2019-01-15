@@ -62,7 +62,7 @@ logger:
   logs:
     homeassistant.components.device_tracker: warn
     homeassistant.components.media_player: warn
-    homeassistant.components.mqtt: debug
+#    homeassistant.components.mqtt: debug
 
 device_tracker:
 #  - platform: bluetooth_tracker
