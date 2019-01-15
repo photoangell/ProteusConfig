@@ -40,9 +40,9 @@
       entity_id: switch.musicbox_amp
     - service: homeassistant.turn_off
       entity_id: switch.studio_amp
-    - service: nest.set_mode
+    - service: nest.set_away_mode
       data:
-        home_mode: away
+        away_mode: away
     - service: media_player.media_pause
       entity_id: media_player.musicbox
     - service: media_player.media_pause
@@ -55,9 +55,9 @@
     entity_id: group.main_people
     to: 'home'
   action:
-    - service: nest.set_mode
+    - service: nest.set_away_mode
       data:
-        home_mode: home
+        away_mode: home
 
 ################################
 #lights
