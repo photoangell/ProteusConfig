@@ -25,6 +25,7 @@
 ################################
 
 - alias: 'Away Mode'
+  initial_state: True
   trigger:
     platform: state
     entity_id: group.main_people
@@ -48,6 +49,7 @@
       entity_id: media_player.studio
 
 - alias: 'Home Mode'
+  initial_state: True
   trigger:
     platform: state
     entity_id: group.main_people
@@ -63,6 +65,7 @@
 
 #this can be cancelled?
 - alias: 'Lamp off if late'
+  initial_state: True
   trigger:
   - platform: time
     at: '00:27:00'
@@ -71,6 +74,7 @@
     entity_id: switch.u3_switch
 
 - alias: 'Lamp on at home at night'
+  initial_state: True
   trigger:
     platform: sun
     event: sunset
