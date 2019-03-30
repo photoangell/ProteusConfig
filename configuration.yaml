@@ -72,16 +72,18 @@ logger:
   logs:
     homeassistant.components.device_tracker: warn
     homeassistant.components.media_player: warn
+#    homeassistant.components.asuswrt: debug
 #    homeassistant.components.mqtt: debug
 
 device_tracker:
-#  - platform: bluetooth_tracker
+  - platform: bluetooth_tracker
   - platform: nmap_tracker
     hosts: 192.168.1.1-200
     home_interval: 10
   - platform: ping
     hosts:
       Modem: 10.0.0.1
+  - platform: bluetooth_le_tracker
 #    scan_options: " -sP "
 #    scan_options: " -sP --host-timeout 5s"
 
