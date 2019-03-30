@@ -27,7 +27,7 @@
 - platform: waqi
   token: !secret waqi_key
   locations:
-    - City of London - Farringdon Street
+    - Hackney
    #stations:
    #  - Beijing US Embassy
 - platform: imap_email_content
