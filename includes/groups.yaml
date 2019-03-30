@@ -35,14 +35,8 @@ darksky:
   name: DarkSky
   entities:
     - sensor.yr_symbol
-    - sensor.waqi_city_of_london__farringdon_street_united_kingdom
     - sensor.dark_sky_apparent_temperature
     - sensor.dark_sky_cloud_coverage
-    - sensor.dark_sky_daily_high_apparent_temperature
-    - sensor.dark_sky_daily_high_temperature
-    - sensor.dark_sky_daily_low_apparent_temperature
-    - sensor.dark_sky_daily_low_temperature
-    - sensor.dark_sky_daily_max_precip_intensity
     - sensor.dark_sky_daily_summary
     - sensor.dark_sky_hourly_summary
     - sensor.dark_sky_humidity
@@ -68,7 +62,6 @@ bitcoin:
     -  sensor.total_sent
     -  sensor.trade_volume
     -  sensor.trade_volume_2
-    -  sensor.piano_ant
 
 main_people:
   name: Main People
@@ -81,7 +74,7 @@ devices:
   name: Devices
   entities:
     - device_tracker.stephen_laptop
-    - device_tracker.stephen_headset
+#    - device_tracker.stephen_headset
     - device_tracker.work_laptop
     - device_tracker.work_laptop_bt
     - device_tracker.shield_tablet_k1_s
@@ -98,7 +91,7 @@ ha_nodes:
     - device_tracker.tap
     - device_tracker.proteus
     - device_tracker.musicbox
-    - device_tracker.studio
+ #   - device_tracker.studio
     - device_tracker.piano
     - device_tracker.miner
     - device_tracker.modem
@@ -110,7 +103,7 @@ other_people:
     - device_tracker.phil_phone
     - device_tracker.magda_phone
     - device_tracker.magda_ipad
-    - device_tracker.alice_phone
+#    - device_tracker.alice_phone
 
 unknown_bluetooth:
   name: Unknown Bluetooth
@@ -128,16 +121,12 @@ unknown_bluetooth:
 unknown_network:
   name: Unknown WIFI Network
   entities:
-    - device_tracker.android53a6a2c1e182f51e
-    - device_tracker.android6463f887639e025c
-    - device_tracker.android1dab40cf59b4ca7
     - device_tracker.a886dd98e6ec
     - device_tracker.18742ef9b34a
     - device_tracker.50465d1b2227
     - device_tracker.android_356708040760389
     - device_tracker.androidb41586c42c65863b
     - device_tracker.703eac3bc21d
-    - device_tracker.hs100
     - device_tracker.androidd7af011a4f562813
     - device_tracker.androidd3e8f25625fed863
 
