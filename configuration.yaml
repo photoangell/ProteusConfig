@@ -35,6 +35,8 @@ logbook:
       - sensor.houseemail
 # Track the sun
 sun:
+# new system health api
+system_health: 
 
 #camera:
 #  - platform: rpi_camera
