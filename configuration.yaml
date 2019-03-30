@@ -151,6 +151,10 @@ notify:
     services:
       - service: email_stephen
       - service: email_anna
+  - name: pushover_stephen
+    platform: pushover
+    api_key: !secret pushover_stephen_api
+    user_key: !secret pushover_stephen_user
 
 ##########################
 # Includes
