@@ -38,7 +38,10 @@ sun:
 # new system health api
 system_health: 
 
-#camera:
+camera:
+  - platform: mjpeg
+    name: Cam1
+    mjpeg_url: http://192.168.1.209/rpicam/cam_pic.php?
 #  - platform: rpi_camera
 #    name: Hall Camera
 #    image_height: 960
