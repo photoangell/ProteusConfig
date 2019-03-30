@@ -25,4 +25,5 @@ pyozw.sqlite
 *.db-wal
 *.sln
 known_devices.yaml.bak
+*.pickle
 
