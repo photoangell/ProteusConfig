@@ -1,6 +1,7 @@
-﻿- platform: tplink
-  host: 10.0.0.220
-  name: U3 Switch
+#tplink:
+#  switch:
+#   - host: 10.0.0.220
+#  name: U3 Switch
 #- platform: rpi_rf
 #  gpio: 17
 #  switches:

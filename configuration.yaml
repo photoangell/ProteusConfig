@@ -48,6 +48,11 @@ sun:
 #    name: USB WebCam
 #    file_path: /mnt/router/haTemp/usbweb.jpg
 
+tplink:
+  switch:
+   - host: 10.0.0.220
+
+
 http:
   # Uncomment this to add a password (recommended!)
 #  api_password: !secret http_api_password
