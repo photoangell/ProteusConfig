@@ -135,6 +135,13 @@ media_player:
     name: Studio
   - platform: snapcast
     host: 192.168.1.208
+
+alexa_media:
+  accounts:
+    - email: !secret alexa_email
+      password: !secret alexa_password
+      url: amazon.co.uk
+
 #  - platform: mpd
 #    host: 192.168.1.209
 #    name: Proteus
@@ -167,6 +174,8 @@ notify:
     platform: pushover
     api_key: !secret pushover_stephen_api
     user_key: !secret pushover_stephen_user
+  - name: alexa_media
+    platform: alexa_media
 
 ##########################
 # Includes
