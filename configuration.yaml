@@ -78,7 +78,7 @@ logger:
 device_tracker:
   - platform: bluetooth_tracker
   - platform: nmap_tracker
-    hosts: 192.168.1.1-200
+    hosts: 192.168.1.1-199
     home_interval: 10
   - platform: ping
     hosts:
@@ -128,13 +128,13 @@ mqtt:
 
 media_player:
   - platform: mpd
-    host: 192.168.1.208
+    host: 127.0.0.1
     name: MusicBox
   - platform: mpd
     host: 192.168.1.202
     name: Studio
   - platform: snapcast
-    host: 192.168.1.208
+    host: 127.0.0.1
 
 alexa_media:
   accounts:
