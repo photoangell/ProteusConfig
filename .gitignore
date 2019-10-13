@@ -26,4 +26,6 @@ pyozw.sqlite
 *.sln
 known_devices.yaml.bak
 *.pickle
+**/homeassistant
+
 
