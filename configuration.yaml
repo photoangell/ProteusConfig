@@ -203,9 +203,7 @@ panel_iframe:
   router:
     title: 'Router'
     url: 'http://192.168.1.1/'
-#  miner:
-#    title: 'Miner'
-#    url: 'http://192.168.1.128/miner.php'
+
 
 ##########################
 #zones
