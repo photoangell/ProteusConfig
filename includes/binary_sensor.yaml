@@ -7,3 +7,8 @@
 #- platform: rpi_gpio
 #  ports:
 #    21: pir_hallway
+- platform: mqtt
+  name: "Hall Sensor"
+  state_topic: "home/hall/sensor/motion"
+  payload_on: "ON"
+  payload_off: "OFF"
