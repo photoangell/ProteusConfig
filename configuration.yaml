@@ -38,10 +38,12 @@ sun:
 # new system health api
 system_health: 
 
+ffmpeg:
+
 camera:
   - platform: mjpeg
     name: Cam1
-    mjpeg_url: http://192.168.1.209/rpicam/cam_pic.php?
+    mjpeg_url: http://192.168.1.209:8081
 #  - platform: rpi_camera
 #    name: Hall Camera
 #    image_height: 960
@@ -94,7 +96,7 @@ asuswrt:
   protocol: ssh
 
 tts:
-  platform: google
+  platform: google_translate
 
 
 #cal
@@ -135,12 +137,15 @@ media_player:
     name: Studio
   - platform: snapcast
     host: 127.0.0.1
+#  - platform: gstreamer
+#    pipeline: "audioresample ! audioconvert ! audio/x-raw,rate=48000,channels=2,format=S16LE ! wavenc ! filesink location=/tmp/snapfifo"
 
-alexa_media:
-  accounts:
-    - email: !secret alexa_email
-      password: !secret alexa_password
-      url: amazon.co.uk
+# from https://github.com/keatontaylor/alexa_media_player
+#alexa_media:
+ # accounts:
+  #  - email: !secret alexa_email
+   #   password: !secret alexa_password
+    #  url: amazon.co.uk
 
 #  - platform: mpd
 #    host: 192.168.1.209
@@ -174,8 +179,8 @@ notify:
     platform: pushover
     api_key: !secret pushover_stephen_api
     user_key: !secret pushover_stephen_user
-  - name: alexa_media
-    platform: alexa_media
+#  - name: alexa_media
+#    platform: alexa_media
 
 ##########################
 # Includes
