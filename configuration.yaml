@@ -94,6 +94,11 @@ asuswrt:
   username: !secret asus_username
   password: !secret asus_password
   protocol: ssh
+  sensors:
+    - upload
+    - download
+    - upload_speed
+    - download_speed
 
 tts:
   platform: google_translate
