@@ -51,13 +51,11 @@ camera:
 #    image_rotation: 90
 #    timelapse: 600
 #    file_path: /mnt/router/haTemp/hallCamera.jpg
-#  - platform: local_file
-#    name: USB WebCam
-#    file_path: /mnt/router/haTemp/usbweb.jpg
 
-tplink:
-  switch:
-   - host: 10.0.0.220
+#u3 switch not connected at the moment
+#tplink:
+#  switch:
+#   - host: 192.168.1.220
 
 
 http:
@@ -115,20 +113,6 @@ nest:
 
 mqtt:
   broker: 127.0.0.1
-#  embedded:
-#    listeners:
-#      default:
-#        max-connections: 5000
-#        bind: localhost:1883
-#        type: tcp
-#      ws-1:
-#          bind: localhost:8888
-#          type: ws
-#    auth:
-#      plugins: ['auth.anonymous']
-#      allow-anonymous: true
-#  broker: localhost
-#  port: 1883
 
 media_player:
   - platform: mpd
@@ -143,15 +127,11 @@ media_player:
 #    pipeline: "audioresample ! audioconvert ! audio/x-raw,rate=48000,channels=2,format=S16LE ! wavenc ! filesink location=/tmp/snapfifo"
 
 # from https://github.com/keatontaylor/alexa_media_player
-#alexa_media:
- # accounts:
-  #  - email: !secret alexa_email
-   #   password: !secret alexa_password
-    #  url: amazon.co.uk
-
-#  - platform: mpd
-#    host: 192.168.1.209
-#    name: Proteus
+alexa_media:
+  accounts:
+    - email: !secret alexa_email
+      password: !secret alexa_password
+      url: amazon.co.uk
 
 notify:
   - name: email_stephen
@@ -181,8 +161,8 @@ notify:
     platform: pushover
     api_key: !secret pushover_stephen_api
     user_key: !secret pushover_stephen_user
-#  - name: alexa_media
-#    platform: alexa_media
+  - name: alexa_media
+    platform: alexa_media
 
 ##########################
 # Includes
