@@ -187,6 +187,10 @@ panel_iframe:
     url: 'http://192.168.1.1/'
 
 
+fan:
+  platform: philips_airpurifier
+  host: 10.0.0.4
+
 ##########################
 #zones
 ##########################
