@@ -183,9 +183,12 @@ shell_command: !include includes/shell_commands.yaml
 
 
 panel_iframe:
-  router:
-    title: 'Router'
-    url: 'http://192.168.1.1/'
+  433mhz:
+    title: '433mhz Control'
+    url: 'http://192.168.1.220'
+  musicbox:
+    title: 'Music Box'
+    url: 'http://192.168.1.200:6680/musicbox_webclient/index.html#home'
 
 
 fan:
